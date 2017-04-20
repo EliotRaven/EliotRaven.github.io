@@ -6,13 +6,6 @@
     <title>ElliotRaven</title>
     <!--style-->
     <link rel="stylesheet" href="style.css" type="text/css" />
-    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
-    <!--libs-->
-    <link rel="stylesheet" href="css/animate.css" type="text/css" />
-    <!--fonts-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/38a3d8d252.css">
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Griffy" rel="stylesheet">
     <!--fovicon-->
     <link rel="icon" type="image/vnd.microsoft.icon" href="img/favicon.ico">
 </head>
@@ -150,6 +143,15 @@
 </footer>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous" type="text/javascript"></script>
+<script>
+    $(document).ready(function() {
+        $("head").append('<link rel="stylesheet" href="css/responsive.css" type="text/css" />' +
+                '<link rel="stylesheet" href="css/animate.css" type="text/css" />' +
+                '<link rel="stylesheet" href="https://use.fontawesome.com/38a3d8d252.css">' +
+                '<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">' +
+                '<link href="https://fonts.googleapis.com/css?family=Griffy" rel="stylesheet">');
+    });
+</script>
 <script src="js/progressbar-new/js/skill.bars.jquery.js"></script>
 <script src="js/waypoints.min.js"></script>
 <script src="js/animate.js"></script>
