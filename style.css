@@ -92,7 +92,7 @@ figure {
     padding: 0;
 }
 
-.h1 {
+.h1, h2 {
     font-size: 48px;
     line-height: 52px;
     position: relative;
