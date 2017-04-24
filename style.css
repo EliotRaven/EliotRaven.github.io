@@ -635,6 +635,18 @@ header nav a:hover {
     padding: 30px 0 0 180px;
 }
 
+#about-block .text-box h1 {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    display: inline-block;
+    margin: 0;
+}
+
+#about-block .text-box p {
+    display: inline-block;
+}
+
 #about-block .soc-link {
     padding-top: 20px;
 }
