@@ -633,13 +633,13 @@ figure {
 #portfolio-block .col3 .col-item .img-box {
     height: 366px;
     overflow: hidden;
+    box-shadow: 0 0 5px rgba(0,0,0,0.4);
 }
 
 #portfolio-block .col3 .img-box img{
     width: 100%;
     height: auto;
     display: block;
-    box-shadow: 0 0 5px rgba(0,0,0,0.4);
 }
 
 #portfolio-block .col3 .h5 {

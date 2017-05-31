@@ -17,4 +17,26 @@ $(document).ready(function () {
         $('body,html').animate({scrollTop: top}, 1000);
     });
 
+    //	accordion
+    $(function($) {
+        var allDrop = $(".skills-row .skills-data");
+        var allDropLink  = $('.skills-row .h5');
+        allDropLink.on('click', function(e) {
+            e.preventDefault();
+            if($(this).hasClass('open'))
+            {
+                $(this).removeClass('open');
+                $(this).next().slideUp('300');
+            }
+            else
+            {
+                allDrop.hide('300');
+                allDropLink.removeClass('open');
+                $(this).addClass('open');
+                $(this).next().slideDown('300');
+                return false;
+            }
+        });
+    });
+
 });
