@@ -26,14 +26,14 @@ $(document).ready(function () {
             if($(this).hasClass('open'))
             {
                 $(this).removeClass('open');
-                $(this).next().slideUp('300');
+                $(this).siblings().slideUp('300');
             }
             else
             {
                 allDrop.hide('300');
                 allDropLink.removeClass('open');
                 $(this).addClass('open');
-                $(this).next().slideDown('300');
+                $(this).siblings('.skills-row .skills-data').slideDown('300');
                 return false;
             }
         });

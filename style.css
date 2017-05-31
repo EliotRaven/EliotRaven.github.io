@@ -439,6 +439,7 @@ figure {
     font-size: 16px;
     line-height: 24px;
     padding-top: 6px;
+    cursor: pointer;
 }
 
 #skills-block .h5 span {
@@ -448,6 +449,16 @@ figure {
 
 .skills {
     padding-top: 8px;
+}
+
+.skills-data {
+    display: none;
+    transition: none;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #666;
+    font-weight: 400;
 }
 
 .skillbar * {
