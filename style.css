@@ -630,9 +630,14 @@ figure {
     box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
+#portfolio-block .col3 .col-item {
+    height: 366px;
+    overflow: hidden;
+}
+
 #portfolio-block .col3 .img-box img{
     width: 100%;
-    height: 366px;
+    height: auto;
     display: block;
     box-shadow: 0 0 5px rgba(0,0,0,0.4);
 }
