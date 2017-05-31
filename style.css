@@ -630,7 +630,7 @@ figure {
     box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
-#portfolio-block .col3 .col-item {
+#portfolio-block .col3 .col-item .img-box {
     height: 366px;
     overflow: hidden;
 }
