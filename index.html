@@ -5,81 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>ElliotRaven</title>
     <meta name="description" content="front-end developer">
+
+    <style>
+        .preloader {
+            -webkit-transition: all .3s;
+            -moz-transition: all .3s;
+            -ms-transition: all .3s;
+            -o-transition: all .3s;
+            transition: all .3s;
+        }
+        .loader {
+            border: 10px solid #f3f3f3;
+            border-top: 10px solid #02bb00;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            position: relative;
+            z-index: 9999;
+            animation: spin 2s linear infinite;
+            margin: 100px auto 0;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        var loader
+
+        function init() {
+
+            // quit if this function has already been called
+            if (arguments.callee.done) return;
+
+            loader = document.createElement("div")
+            loader.classList.add('loader')
+
+            document.body.appendChild(loader)
+
+            // flag this function so we don't do the same thing twice
+            arguments.callee.done = true;
+
+            // kill the timer
+            if (_timer) clearInterval(_timer);
+
+            // do stuff
+        };
+        function loadApp() {
+            // kill the timer
+            if (_timer2) clearInterval(_timer2);
+
+            loader.remove()
+
+            var preloader = document.querySelector('.preloader')
+
+            preloader.style.display = 'block'
+        }
+
+        /* for Mozilla/Opera9 */
+        if (document.addEventListener) {
+            document.addEventListener("DOMContentLoaded", init, false);
+        }
+
+        /* for Internet Explorer */
+        /*@cc_on @*/
+        /*@if (@_win32)
+          document.write("<script id=__ie_onload defer src=javascript:void(0)><\/script>");
+          var script = document.getElementById("__ie_onload");
+          script.onreadystatechange = function() {
+            if (this.readyState == "complete") {
+              init(); // call the onload handler
+            }
+          };
+        /*@end @*/
+
+        /* for Safari */
+        if (/WebKit/i.test(navigator.userAgent)) {  // sniff
+            var _timer = setInterval(function() {
+                if (/loaded|interactive/.test(document.readyState)) {
+                    init(); // call the onload handler
+                }
+                if (/complete/.test(document.readyState)) {
+                    loadApp(); // call the onload handler
+                }
+            }, 10);
+            var _timer2 = setInterval(function() {
+                if (/complete/.test(document.readyState)) {
+                    loadApp(); // call the onload handler
+                }
+            }, 10);
+        }
+
+        /* for other browsers */
+        window.onload = init;
+    </script>
+
+    <!--favicon-->
+    <link rel="icon" type="image/vnd.microsoft.icon" href="img/favicon/favicon.ico">
+    <link rel="SHORTCUT ICON" href="img/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="img/favicon/gear-152-215459.png" />
+    <!--fonts-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/38a3d8d252.css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Griffy" rel="stylesheet">
     <!--style-->
-    <style>header {  padding: 10px 0;  }  header figure {  float: left;  }  header figure a, footer a {  display: block;  font-size: 32px;  line-height: 36px;  color: #fff;  font-family: 'Griffy', cursive;  }  header figure a i, footer a i {  font-size: 30px;  color: #fff;  margin-right: 5px;  }  header nav {  float: right;  padding: 5px 0;  }  header nav a {  display: inline-block;  vertical-align: middle;  font-size: 18px;  text-transform: uppercase;  padding: 0 10px;  position: relative;  }  header nav a:not(:last-child):after {  width: 1px;  background: #fff;  position: absolute;  top:0;  bottom: 0;  right: 0;  display: block;  }  header nav a:hover {  color: #3cb878;  }  .status {  padding: 10px 0;  font-size: 20px;  line-height: 24px;  text-align: center;  }  .on {  color: #80be2c;  }  .off {  color: #f15b26;  }  #about-block {  padding: 30px 0;  }  #about-block .img-box {  width: 160px;  height: 160px;  border-radius: 100%;  overflow: hidden;  float: left;  }  #about-block .img-box img {  width: 100%;  }  #about-block .text-box {  padding: 30px 0 0 180px;  }  #about-block .text-box h1 {  font-size: 18px;  line-height: 24px;  font-weight: 400;  display: inline-block;  margin: 0;  }  #about-block .text-box p {  display: inline-block;  }  #about-block .soc-link {  padding-top: 20px;  }  #about-block .soc-link li {  display: inline-block;  vertical-align: middle;  }  #about-block .soc-link a {display: inline-block;  vertical-align: middle;  margin: 0 3px;  position: relative;  }  #about-block .soc-link a {padding-left: 5px;  margin-right: 30px;  }  #about-block .soc-link a:hover {color: #f15b26;  }  #about-block .soc-link img {width: 20px;  height: 20px;  display: inline-block;  vertical-align: middle;  }</style>
+    <style>header {  padding: 10px 0;  }  header figure {  float: left;  }  header figure a, footer a {  display: block;  font-size: 32px;  line-height: 36px;  color: #fff;  font-family: 'Griffy', cursive;  }  header figure a i, footer a i {  font-size: 30px;  color: #fff;  margin-right: 5px;  }  header nav {  float: right;  padding: 5px 0;  }  header nav a {  display: inline-block;  vertical-align: middle;  font-size: 18px;  text-transform: uppercase;  padding: 0 10px;  position: relative;  }  header nav a:not(:last-child):after {  width: 1px;  background: #fff;  position: absolute;  top:0;  bottom: 0;  right: 0;  display: block;  }  header nav a:hover {  color: #3cb878;  }  .status {  padding: 10px 0;  font-size: 20px;  line-height: 24px;  text-align: center;  }  .on {  color: #80be2c;  }  .off {  color: #f15b26;  }  #about-block {  padding: 30px 0;  }  #about-block .img-box {  width: 160px;  height: 160px;  border-radius: 100%;  overflow: hidden;  float: left;  }  #about-block .img-box img {  width: 100%;  }  #about-block .text-box {  padding: 0 0 0 180px;  }  #about-block .text-box h1 {  font-size: 18px;  line-height: 24px;  font-weight: 400;  display: inline-block;  margin: 0;  }  #about-block .text-box p { padding-bottom: 10px }  #about-block .soc-link {  padding-top: 20px;  }  #about-block .soc-link li {  display: inline-block;  vertical-align: middle;  }  #about-block .soc-link a {display: inline-block;  vertical-align: middle;  margin: 0 3px;  position: relative;  }  #about-block .soc-link a {margin-right: 10px;} #about-block .soc-link a:hover {color: #f15b26;}  #about-block .soc-link img {width: 30px;  height: 30px;  display: inline-block;  vertical-align: middle;  }</style>
 
 </head>
 <body>
 
-<header class="mgrey-bg" id="header">
-    <div class="page-width clear-fix">
-        <figure><a href="#"><i class="fa fa-cogs"></i>ElliotRaven</a></figure>
-        <nav>
-            <a href="#about-block" class="animate-scroll">about</a>
-            <a href="#skills-block" class="animate-scroll">skills</a>
-            <a href="#portfolio-block" class="animate-scroll">portfolio</a>
-        </nav>
-    </div>
-</header>
-
-<main>
-    <div class="status-box">
-        <div class="page-width">
-            <div class="status on">Free</div>
-        </div>
-    </div>
-    <section id="about-block" class="white-bg">
+<div class="preloader" style="display: none;">
+    <header class="mgrey-bg" id="header">
         <div class="page-width clear-fix">
-            <h2>About me</h2>
-            <div class="img-box">
-                <img src="img/ZrOPfZ90sT8.jpg" alt="2">
-            </div>
-            <div class="text-box">
-                <p>
-                    Hello!
+            <figure><a href="#"><i class="fa fa-cogs"></i>ElliotRaven</a></figure>
+            <nav>
+                <a href="#about-block" class="animate-scroll">about</a>
+                <a href="#skills-block" class="animate-scroll">skills</a>
+                <a href="#portfolio-block" class="animate-scroll">portfolio</a>
+            </nav>
+        </div>
+    </header>
 
-                    I'm a professional developer from Zaporizhzhia, Ukraine. I am comfortable working alone or as a part of a team and always eager to learn new technologies to keep my skills up-to-date.
-
-                    I am quite well aware of latest JS frameworks. I am specializing in Vue and React and I am keen on working with:
-                </p>
-                <ul>
-                    <li>VueJS</li>
-                    <li>ReactJS</li>
-                    <li>NodeJS</li>
-                </ul>
-                <p>
-                    Apart from this, I am well-versed in HTML5, CSS3(LESS/SASS), bootstrap, jquery etc.
-
-                    And familiar with WebPack, Gulp, also I've had experience of writing unit-tests.
-
-                    If you are desperate looking for someone who sticks to result-driven working manner with great attention to detail,
-                    periodic thorough code review, and critical thinking - do not be!
-                    As you've already found the guy :)
-
-                    Let's do not waster time, send me a word and we'll discuss all details.
-                </p>
-                <ul class="soc-link">
-                    <li><img src="img/skype-icon-2.png" alt="skype"><a href="skype:emmyliondavin4i">Eugene Lipman</a></li>
-                    <li><img src="img/gmail.ico" alt="gmail"><a href="mailto:eliotraven@gmail.com">eliotraven@gmail.com</a></li>
-                    <li><img src="img/upwork.png" alt="upwork"><a href="https://www.upwork.com/freelancers/~019d8ac4631a853d73">UpworK</a></li>
-                </ul>
+    <main>
+        <div class="status-box">
+            <div class="page-width">
+                <div class="status on">Free</div>
             </div>
         </div>
-    </section>
-    <section id="skills-block">
-        <div class="page-width">
-            <h2>Skills</h2>
-            <div class="skills clear-fix">
-                <div class="col-container clear-fix"></div>
-                <div class="col2 bounceInRight">
+        <section id="about-block" class="white-bg">
+            <div class="page-width clear-fix">
+                <h2>About me</h2>
+                <div class="img-box">
+                    <img src="img/ZrOPfZ90sT8.jpg" alt="2">
+                </div>
+                <div class="text-box">
+                    <p>
+                        I'm a professional developer from Zaporizhzhia, Ukraine. I am comfortable working alone or as a
+                        part of a team and always eager to learn new technologies to keep my skills up-to-date.
+                    </p>
+                    <p>
+                        I am quite well aware of latest JS frameworks. I am specializing in
+                        React.js, Vue.js 2 as front end and NodeJS as back end.
+                    </p>
+                    <p>
+                        Apart from this, I am well-versed in HTML5, CSS3(LESS/SASS), bootstrap, jquery etc.
+                    </p>
+                    <p>
+                        And familiar with WebPack, Gulp, also I've had experience of writing unit-tests.
+                    </p>
+                    <p>
+                        If you are desperate looking for someone who sticks to result-driven working manner with great
+                        attention to detail, periodic thorough code review, and critical thinking - do not be!
+                        As you've already found the guy :)
+                    </p>
+                    <p>
+                        Let's do not waste time, send me a word and we'll discuss all details.
+                    </p>
+                    <ul class="soc-link">
+                        <li><a href="skype:air_drops"><img src="img/skype-icon-2.png" alt="skype"></a></li>
+                        <li><a href="mailto:yevhen.lipa@gmail.com"><img src="img/gmail.ico" alt="gmail"></a></li>
+                        <li><a href="https://www.upwork.com/freelancers/~019d8ac4631a853d73"><img src="img/upwork.png" alt="upwork"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="skills-block">
+            <div class="page-width">
+                <h2>Skills</h2>
+                <div class="skills clear-fix">
+                    <div class="col-container clear-fix"></div>
+                    <div class="col2 bounceInRight">
                         <div class="skills-row">
                             <div class="h5">HTML, HTML5, PUG, JADE, BLADE, CSS, CSS3, SASS, SCSS, LESS</div>
                             <div class="skillbar" data-percent="83">
                                 <div class="skillbar-bar yellow-bg"></div>
                                 <!--<span class="skill-bar-percent"></span>-->
                             </div>
-                            <div class="skills-data">Clean, adaptive and valid HTML markup. Observance of cascade. Understanding of preprocessors.
-                                cross-browser compatibility and adaptability</div>
+                            <div class="skills-data">
+                                Clean, adaptive and valid HTML markup.
+                                Adherance to cascade.
+                                Understanding of preprocessors.
+                                Cross-browser compatibility and adaptability
+                            </div>
                         </div>
                         <div class="skills-row">
                             <div class="h5">VueJs</div>
@@ -111,124 +221,121 @@
                             </div>
                         </div>
                     </div>
-                <div class="col2 bounceInLeft">
-                    <div class="skills-row">
-                        <div class="h5">Angular 2+</div>
-                        <div class="skillbar" data-percent="33">
-                            <div class="skillbar-bar pink-bg"></div>
-                            <!--<span class="skill-bar-percent"></span>-->
+                    <div class="col2 bounceInLeft">
+                        <div class="skills-row">
+                            <div class="h5">Angular 2+</div>
+                            <div class="skillbar" data-percent="33">
+                                <div class="skillbar-bar pink-bg"></div>
+                                <!--<span class="skill-bar-percent"></span>-->
+                            </div>
+                            <div class="skills-data">I haven't dealt with it much, but I am ready to learnt it if needed.</div>
                         </div>
-                        <div class="skills-data">have some experience</div>
-                    </div>
-                    <div class="skills-row">
-                        <div class="h5">NodeJS</div>
-                        <div class="skillbar" data-percent="66">
-                            <div class="skillbar-bar olive-bg"></div>
-                            <!--<span class="skill-bar-percent"></span>-->
+                        <div class="skills-row">
+                            <div class="h5">NodeJS</div>
+                            <div class="skillbar" data-percent="66">
+                                <div class="skillbar-bar olive-bg"></div>
+                                <!--<span class="skill-bar-percent"></span>-->
+                            </div>
+                            <div class="skills-data">Have experience writing APIs, server applications.</div>
                         </div>
-                        <div class="skills-data">Have experience writing APIs, server applications.</div>
-                    </div>
-                    <div class="skills-row">
-                        <div class="h5">Git, github, bitbucket</div>
-                        <div class="skillbar" data-percent="85">
-                            <div class="skillbar-bar blue-bg"></div>
-                            <!--<span class="skill-bar-percent"></span>-->
+                        <div class="skills-row">
+                            <div class="h5">Git, github, bitbucket</div>
+                            <div class="skillbar" data-percent="85">
+                                <div class="skillbar-bar blue-bg"></div>
+                                <!--<span class="skill-bar-percent"></span>-->
+                            </div>
+                            <div class="skills-data">Create repos, smart branching, set up pipelines, set up sonar system if required.</div>
                         </div>
-                        <div class="skills-data">Have experience working in team</div>
-                    </div>
-                    <div class="skills-row">
-                        <div class="h5">AWS</div>
-                        <div class="skillbar" data-percent="72">
-                            <div class="skillbar-bar wyellow-bg"></div>
-                            <!--<span class="skill-bar-percent"></span>-->
+                        <div class="skills-row">
+                            <div class="h5">AWS</div>
+                            <div class="skillbar" data-percent="72">
+                                <div class="skillbar-bar wyellow-bg"></div>
+                                <!--<span class="skill-bar-percent"></span>-->
+                            </div>
+                            <div class="skills-data">
+                                Creating and setting up instances.
+                                Work with AWS services and APIs
+                            </div>
                         </div>
-                        <div class="skills-data">Creating and setting up an instance. Work with AWS services and APIs</div>
                     </div>
                 </div>
             </div>
+        </section>
+        <div id="more-skills" class="white-bg">
+            <div class="page-width">
+                <div class="text-skills">
+                    <ul>
+                        <li><span>Create, edit, bugfix, support web and server applications.</span></li>
+                        <li><span>Familiar with WebPack, Gulp.</span></li>
+                        <li><span>I am well-versed in HTML5, CSS3(LESS/SASS), bootstrap, jquery etc.</span></li>
+                        <li><span>3 years of working experience.</span></li>
+                        <li><span>Have experience of writing unit-tests.</span></li>
+                        <li><span>I can deliver quality results quite fast and on time.</span></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </section>
-    <div id="more-skills" class="white-bg">
+        <section id="portfolio-block">
+            <div class="page-width">
+                <h2>Portfolio</h2>
+                <div class="col-container clear-fix">
+                    <div class="col3">
+                        <div class="col-item">
+                            <div class="img-box"><img src="img/screenshot.jpg" alt="ecosquared"></div>
+                            <div class="text-box">
+                                <div class="h5">VueJS + Laravel</div>
+                            </div>
+                            <a href="https://ecosquared.tech" class="read-more"></a>
+                        </div>
+                    </div>
+                    <div class="col3">
+                        <div class="col-item">
+                            <div class="img-box"><img src="img/screenshot2.png" alt="quwi"></div>
+                            <div class="text-box">
+                                <div class="h5">VueJS + Nuxt</div>
+                            </div>
+                            <a href="http://quwi.surge.sh" class="read-more"></a>
+                        </div>
+                    </div>
+                    <div class="col3">
+                        <div class="col-item">
+                            <div class="img-box"><img src="img/screenshot3.jpg" alt="together"></div>
+                            <div class="text-box">
+                                <div class="h5">Laravel + js</div>
+                            </div>
+                            <a href="https://www.fundingtestapp.com/" class="read-more"></a>
+                        </div>
+                    </div>
+                    <div class="col3">
+                        <div class="col-item">
+                            <div class="img-box"><img src="img/screenshot4.jpg" alt="react-simple-trello"></div>
+                            <div class="text-box">
+                                <div class="h5">React dashboard task manager</div>
+                            </div>
+                            <a href="http://react-trello-simple.surge.sh/" class="read-more"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mgrey-bg">
         <div class="page-width">
-            <div class="text-skills">
-                <ul>
-                    <li><span>Creating, editing, bugfixing, supporting web applications.</span></li>
-                    <li><span>And familiar with WebPack, Gulp, also I've had experience of writing unit-tests.</span></li>
-                    <li><span>Apart from this, I am well-versed in HTML5, CSS3(LESS/SASS), bootstrap, jquery etc.</span></li>
-                    <li><span>More than a 3 year of working</span></li>
-                    <li><span>Creating, editing, bugfixing, supporting server applications.</span></li>
-                    <li><span>Quality and timing at height</span></li>
-                </ul>
-            </div>
+            <a href="#header" class="animate-scroll"><i class="fa fa-cogs"></i>ElliotRaven</a>
         </div>
-    </div>
-    <section id="portfolio-block">
-        <div class="page-width">
-            <h2>Portfolio</h2>
-            <div class="col-container clear-fix">
-                <div class="col3">
-                    <div class="col-item">
-                        <div class="img-box"><img src="img/screenshot.jpg" alt="ecosquared"></div>
-                        <div class="text-box">
-                            <div class="h5">VueJS + Laravel</div>
-                        </div>
-                        <a href="https://ecosquared.tech" class="read-more"></a>
-                    </div>
-                </div>
-                <div class="col3">
-                    <div class="col-item">
-                        <div class="img-box"><img src="img/screenshot2.png" alt="quwi"></div>
-                        <div class="text-box">
-                            <div class="h5">VueJS + Nuxt</div>
-                        </div>
-                        <a href="http://quwi.surge.sh" class="read-more"></a>
-                    </div>
-                </div>
-                <div class="col3">
-                    <div class="col-item">
-                        <div class="img-box"><img src="img/screenshot3.jpg" alt="together"></div>
-                        <div class="text-box">
-                            <div class="h5">Laravel + js</div>
-                        </div>
-                        <a href="https://www.fundingtestapp.com/" class="read-more"></a>
-                    </div>
-                </div>
-                <div class="col3">
-                    <div class="col-item">
-                        <div class="img-box"><img src="img/screenshot4.jpg" alt="react-simple-trello"></div>
-                        <div class="text-box">
-                            <div class="h5">React dashboard tasker</div>
-                        </div>
-                        <a href="http://react-trello-simple.surge.sh/" class="read-more"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
+    </footer>
 
-<footer class="mgrey-bg">
-    <div class="page-width">
-        <a href="#header" class="animate-scroll"><i class="fa fa-cogs"></i>ElliotRaven</a>
-    </div>
-</footer>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
 
-<link rel="stylesheet" href="style.css" type="text/css" />
-<link rel="stylesheet" href="css/responsive.css" type="text/css" />
-<link rel="stylesheet" href="css/animate.css" type="text/css" />
-<!--fovicon-->
-<link rel="icon" type="image/vnd.microsoft.icon" href="img/favicon/favicon.ico">
-<link rel="SHORTCUT ICON" href="img/favicon/favicon.ico">
-<link rel="apple-touch-icon" href="img/favicon/gear-152-215459.png" />
-<!--fonts-->
-<link rel="stylesheet" href="https://use.fontawesome.com/38a3d8d252.css">
-<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Griffy" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/skill.bars.jquery.js"></script>
+    <script type="text/javascript" src="js/waypoints.min.js"></script>
+    <script type="text/javascript" src="js/animate.js"></script>
+    <script type="text/javascript" src="js/action.js"></script>
+</div>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/skill.bars.jquery.js"></script>
-<script type="text/javascript" src="js/waypoints.min.js"></script>
-<script type="text/javascript" src="js/animate.js"></script>
-<script type="text/javascript" src="js/action.js"></script>
 </body>
 </html>
